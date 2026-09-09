@@ -19,6 +19,7 @@ h1 {
 
 .teclado {
   display: flex;
+  position: relative;
   background-color: #cccccc;
   border-radius: 6px;
   padding: 5px;
@@ -29,16 +30,16 @@ h1 {
   border-radius: 0 0 5px 5px;
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: bold;
   height: 230px;
   width: 65px;
   background-color: #ffffff;
-  color: black;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 12px;
+  color: #333333;
+  padding-top: 180px;
+  padding-bottom: 10px;
+  white-space: pre-wrap; 
+  text-align: center;
 }
 
 .tecla.ativa,
@@ -49,4 +50,24 @@ h1 {
 
 .tecla:focus {
   outline: none;
+}
+
+.tecla.preta {
+  background-color: #000000;
+  color: #ffffff;
+  height: 140px;          
+  width: 40px;           
+  margin-left: -20px;    
+  margin-right: -20px;   
+  z-index: 2;            
+  border-radius: 0 0 4px 4px;
+  font-size: 0.7rem;
+  line-height: 1.1;
+  padding-top: 90px;
+  padding-bottom: 8px;
+}
+
+.tecla.preta:active,
+.tecla.preta.ativa {
+  background-color: #333333;
 }
