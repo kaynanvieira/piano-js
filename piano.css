@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #191919;
+  min-height: 80vh;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  color: #fff;
+}
+
+.teclado {
+  display: flex;
+  background-color: #cccccc;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+.tecla {
+  border: 1px solid #b3b3b3;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 230px;
+  width: 65px;
+  background-color: #ffffff;
+  color: black;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12px;
+}
+
+.tecla.ativa,
+.tecla:active {
+  background-color: #e0e0e0;
+  outline: none;
+}
+
+.tecla:focus {
+  outline: none;
+}
