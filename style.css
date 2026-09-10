@@ -147,3 +147,56 @@ h1 {
 .tecla.preta {
   z-index: 5;
 }
+
+/* --- ADAPTAÇÃO PARA CABER O PIANO INTEIRO NA TELA DO CELULAR --- */
+@media (max-width: 768px) {
+  /* Esconde o botão de atalhos e o seletor de oitavas no celular */
+  #btn-legendas,
+  .seletor-oitavas {
+    display: none;
+  }
+
+  /* Remove margens e ajusta o container para ocupar a largura total */
+  body {
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .teclado {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 2px;
+    box-sizing: border-box;
+    justify-content: center;
+    overflow: hidden; /* Impede qualquer rolagens laterais */
+  }
+
+  /* Teclas Brancas: Largura calculada proporcionalmente para caberem as 21 */
+  .tecla {
+    width: calc(100vw / 21.5); 
+    height: 160px;
+    padding-top: 120px;
+    padding-bottom: 5px;
+    font-size: 0.55rem;
+    line-height: 1;
+    border-radius: 0 0 3px 3px;
+  }
+
+  /* Teclas Pretas: Encaixe proporcional sobre as brancas */
+  .tecla.preta {
+    width: calc(100vw / 38);
+    height: 100px;
+    margin-left: calc(-100vw / 76);
+    margin-right: calc(-100vw / 76);
+    padding-top: 65px;
+    padding-bottom: 5px;
+    font-size: 0.45rem;
+    line-height: 1;
+    z-index: 5;
+    border-radius: 0 0 2px 2px;
+  }
+}
