@@ -197,9 +197,11 @@ h1 {
   }
 }
 
-/* 2. CELULAR DEITADO (LANDSCAPE): PIANO EM TELA CHEIA */
+/* =========================================================
+   2. CELULAR DEITADO (LANDSCAPE - IPHONE / SAMSUNG)
+   ========================================================= */
 @media screen and (max-height: 500px) and (orientation: landscape),
-       screen and (pointer: coarse) and (orientation: landscape) {
+       screen and (pointer: coarse) and (max-height: 500px) {
 
   .aviso-orientacao,
   #btn-legendas,
@@ -211,36 +213,103 @@ h1 {
     padding: 0;
     margin: 0;
     min-height: 100vh;
+    background-color: #121212; /* Fundo bem escuro */
     justify-content: center;
+    align-items: center;
   }
 
+  /* O container ganha fundo escuro e uma pequena margem interna (padding) */
+  .teclado {
+    width: 98vw; /* Deixa 1vw de margem em cada lateral */
+    max-width: 98vw;
+    height: 94vh; /* Preenche quase toda a altura */
+    padding: 3px; /* Pequena borda preta/escura contornando o piano */
+    background-color: #222222; /* Troca o cinza claro por um tom preto/grafite elegante */
+    border-radius: 4px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* As teclas brancas ocupam 100% da altura interna do container */
+  .tecla {
+    width: calc(100% / 21) !important;
+    height: 100% !important;
+    padding-top: calc(94vh - 35px) !important; /* Texto colado no rodapé */
+    padding-bottom: 5px;
+    font-size: 0.65rem;
+    border-radius: 0 0 3px 3px;
+    box-sizing: border-box;
+  }
+
+  /* Teclas pretas ajustadas proporcionalmente em altura e posição */
+  .tecla.preta {
+    width: calc((100% / 21) * 0.65) !important;
+    height: 60% !important;
+    margin-left: calc(((100% / 21) * 0.65) / -2) !important;
+    margin-right: calc(((100% / 21) * 0.65) / -2) !important;
+    padding-top: calc(56vh - 25px) !important;
+    padding-bottom: 5px;
+    font-size: 0.5rem;
+    z-index: 5;
+  }
+}
+
+/* =========================================================
+   REGRAS ESPECÍFICAS PARA TABLETS (IPAD, GALAXY TAB)
+   ========================================================= */
+
+@media (pointer: coarse) and (min-width: 601px),
+       screen and (min-width: 769px) and (max-width: 1280px) {
+
+  /* Esconde o aviso de rotação e o botão de atalhos no tablet */
+  .aviso-orientacao,
+  #btn-legendas,
+  .controles {
+    display: none !important;
+  }
+
+  /* Garante que o piano fique visível no tablet em pé e deitado */
+  h1,
+  .teclado {
+    display: flex !important;
+  }
+
+  body {
+    padding: 10px 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin: 10px 0 20px 0;
+  }
+
+  /* Ajusta o container para ocupar 100% da largura do tablet sem cortar as pontas */
   .teclado {
     width: 100vw;
     max-width: 100vw;
-    height: 96vh;
     padding: 2px;
     border-radius: 0;
     overflow: hidden;
     box-sizing: border-box;
   }
 
+  /* Distribui as 21 teclas brancas perfeitamente dentro da tela do tablet */
   .tecla {
     width: calc(100vw / 21) !important;
-    height: 100%;
-    padding-top: calc(96vh - 35px);
-    padding-bottom: 4px;
+    height: 220px;
+    padding-top: 170px;
     font-size: 0.7rem;
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 4px 4px;
     box-sizing: border-box;
   }
 
+  /* Teclas pretas alinhadas e sem estourar */
   .tecla.preta {
     width: calc((100vw / 21) * 0.65) !important;
-    height: 60%;
+    height: 135px;
     margin-left: calc(((100vw / 21) * 0.65) / -2) !important;
     margin-right: calc(((100vw / 21) * 0.65) / -2) !important;
-    padding-top: calc(57vh - 25px);
-    padding-bottom: 4px;
+    padding-top: 85px;
     font-size: 0.55rem;
     z-index: 5;
   }
