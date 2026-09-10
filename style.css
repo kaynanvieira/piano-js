@@ -9,12 +9,46 @@ body {
   flex-direction: column;
   background-color: #191919;
   min-height: 80vh;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
 }
 
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 48px;
   color: #fff;
+}
+
+.controles {
+  margin-bottom: 25px;
+}
+
+.btn-toggle {
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border: 2px solid #444444;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle:hover {
+  background-color: #383838;
+  border-color: #00d2ff;
+}
+
+.btn-toggle.ativo {
+  background-color: #00d2ff;
+  color: #000000;
+  border-color: #00d2ff;
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
 }
 
 .teclado {
@@ -26,6 +60,7 @@ h1 {
 }
 
 .tecla {
+  position: relative;
   border: 1px solid #b3b3b3;
   border-radius: 0 0 5px 5px;
   cursor: pointer;
@@ -40,6 +75,7 @@ h1 {
   padding-bottom: 10px;
   white-space: pre-wrap; 
   text-align: center;
+  line-height: 1.1;
 }
 
 .tecla.ativa,
@@ -61,7 +97,7 @@ h1 {
   margin-right: -20px;   
   z-index: 2;            
   border-radius: 0 0 4px 4px;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   line-height: 1.1;
   padding-top: 90px;
   padding-bottom: 8px;
@@ -70,4 +106,44 @@ h1 {
 .tecla.preta:active,
 .tecla.preta.ativa {
   background-color: #333333;
+}
+
+/* --- LEGENDAS DAS TECLAS (BADGES) --- */
+/* Ocultas por padrão */
+.tecla::before {
+  content: attr(data-atalho);
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #00d2ff;
+  color: #000000;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 4px;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tecla.preta::before {
+  top: 6px;
+  background-color: #ff0000; /* Destaque amarelo para a tecla preta */
+  font-size: 0.6rem;
+  padding: 2px 2px;
+  max-width: 95%;
+}
+
+/* Exibe as legendas quando o teclado tiver a classe .mostrar-legendas */
+.teclado.mostrar-legendas .tecla::before {
+  opacity: 1;
+}
+
+.tecla.preta {
+  z-index: 5;
 }

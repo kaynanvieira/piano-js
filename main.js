@@ -1,10 +1,11 @@
-const teclas = document.querySelectorAll('.tecla')
+const teclas = document.querySelectorAll('.tecla');
+const tecladoContainer = document.querySelector('.teclado');
+const btnLegendas = document.getElementById('btn-legendas');
 
 const mapaTeclas = {
     // ==========================================
     // 1ª OITAVA (GRAVE)
     // ==========================================
-    // Brancas
     'Tab': 'C3',
     'KeyQ': 'D3',
     'KeyW': 'E3',
@@ -13,10 +14,8 @@ const mapaTeclas = {
     'KeyT': 'A3',
     'KeyY': 'B3',
 
-    // Pretas (Teclas numéricas logo acima)
-    'Backquote': 'Db3', // Tecla do acento ´
+    'Backquote': 'Db3',
     'Digit1': 'Eb3',
-    /* E3 não tem preta */
     'Digit3': 'Gb3',
     'Digit4': 'Ab3',
     'Digit5': 'Bb3',
@@ -24,19 +23,16 @@ const mapaTeclas = {
     // ==========================================
     // 2ª OITAVA (MÉDIA)
     // ==========================================
-    // Brancas
     'KeyU': 'C4',
     'KeyI': 'D4',
     'KeyO': 'E4',
     'KeyP': 'F4',
-    'BracketLeft': 'G4',  // Tecla [ (ou ´ dependendo do mapa físico)
-    'BracketRight': 'A4', // Tecla ]
-    'Backslash': 'B4',    // Tecla \
+    'BracketLeft': 'G4',
+    'BracketRight': 'A4',
+    'Backslash': 'B4',
 
-    // Pretas
     'Digit7': 'Db4',
     'Digit8': 'Eb4',
-    /* E4 não tem preta */
     'Digit0': 'Gb4',
     'Minus': 'Ab4',
     'Equal': 'Bb4',
@@ -44,7 +40,6 @@ const mapaTeclas = {
     // ==========================================
     // 3ª OITAVA (AGUDA)
     // ==========================================
-    // Brancas
     'Delete': 'C5',
     'End': 'D5',
     'PageDown': 'E5',
@@ -53,35 +48,48 @@ const mapaTeclas = {
     'Numpad9': 'A5',
     'NumpadAdd': 'B5',
 
-   'Insert': 'Db5',
+    'Insert': 'Db5',
     'Home': 'Eb5',
-    /* E5 não tem preta */
     'NumLock': 'Gb5',
-    'NumpadDivide': 'Ab5', // Tecla / do teclado numérico
-    'NumpadMultiply': 'Bb5' // Tecla * do teclado numérico
+    'NumpadDivide': 'Ab5',
+    'NumpadMultiply': 'Bb5'
 };
 
+// --- FUNÇÃO PARA TOCAR O SOM (PIANO REAL) ---
 function tocarNota(tecla) {
     const nota = tecla.dataset.nota;
-    const audio = new Audio(`audios/${nota}.mp3`);
     
+    // Cria um novo objeto de áudio a cada toque.
+    // Isso permite sobrepor sons e deixar o caimento (decay) natural da nota acontecer!
+    const audio = new Audio(`audios/${nota}.mp3`);
     audio.play();
 }
 
+// --- EVENTOS DO MOUSE ---
 teclas.forEach(tecla => {
-    tecla.addEventListener('click', () => {
+    tecla.addEventListener('mousedown', () => {
         tocarNota(tecla);
+        tecla.classList.add('ativa');
+    });
+
+    // Ao soltar ou tirar o mouse, apenas remove o efeito visual (o som continua até o fim)
+    tecla.addEventListener('mouseup', () => {
+        tecla.classList.remove('ativa');
+    });
+
+    tecla.addEventListener('mouseleave', () => {
+        tecla.classList.remove('ativa');
     });
 });
 
+// --- EVENTOS DO TECLADO ---
 document.addEventListener('keydown', (event) => {
-    if (event.repeat) return;
+    if (event.repeat) return; // Evita metralhadora de áudio enquanto segura a tecla
 
-    // Usamos event.code para ignorar problemas de acentuação/Dead Keys
     const nota = mapaTeclas[event.code];
 
     if (nota) {
-        event.preventDefault(); // Impede comportamento padrão como o Tab pular foco
+        event.preventDefault(); // Impede ações do navegador (como Tab)
 
         const elementoTecla = document.querySelector(`[data-nota="${nota}"]`);
         if (elementoTecla) {
@@ -91,14 +99,22 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Evento keyup atualizado
 document.addEventListener('keyup', (event) => {
     const nota = mapaTeclas[event.code];
 
     if (nota) {
         const elementoTecla = document.querySelector(`[data-nota="${nota}"]`);
         if (elementoTecla) {
+            // Apenas remove a cor de tecla pressionada
             elementoTecla.classList.remove('ativa');
         }
     }
 });
+
+// --- TOGGLE DA FLAG DE LEGENDAS ---
+if (btnLegendas) {
+    btnLegendas.addEventListener('click', () => {
+        tecladoContainer.classList.toggle('mostrar-legendas');
+        btnLegendas.classList.toggle('ativo');
+    });
+}

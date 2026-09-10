@@ -9,49 +9,56 @@
 </head>
 <body>
     <h1>Piano Virtual</h1>
+    <div class="controles">
+        <button id="btn-legendas" class="btn-toggle">
+            <span class="icone">⌨️</span>
+            <span class="texto">Atalhos do Teclado</span>
+        </button>
+    </div>
+
     <section class="teclado">
-    <!-- 1ª Oitava (Grave) -->
-    <input class="tecla" data-nota="C3" type="button" value="Dó">
-    <input class="tecla preta" data-nota="Db3" type="button" value="Dó&#10;Ré♭">
-    <input class="tecla" data-nota="D3" type="button" value="Ré">
-    <input class="tecla preta" data-nota="Eb3" type="button" value="Ré&#10;Mi♭">
-    <input class="tecla" data-nota="E3" type="button" value="Mi">
-    <input class="tecla" data-nota="F3" type="button" value="Fá">
-    <input class="tecla preta" data-nota="Gb3" type="button" value="Fá&#10;Sol♭">
-    <input class="tecla" data-nota="G3" type="button" value="Sol">
-    <input class="tecla preta" data-nota="Ab3" type="button" value="Sol&#10;Lá♭">
-    <input class="tecla" data-nota="A3" type="button" value="Lá">
-    <input class="tecla preta" data-nota="Bb3" type="button" value="Lá&#10;Si♭">
-    <input class="tecla" data-nota="B3" type="button" value="Si">
+        <!-- 1ª OITAVA (GRAVE) -->
+        <button class="tecla" data-nota="C3" data-atalho="TAB">Dó</button>
+        <button class="tecla preta" data-nota="Db3" data-atalho="´">Dó#<br>Ré♭</button>
+        <button class="tecla" data-nota="D3" data-atalho="Q">Ré</button>
+        <button class="tecla preta" data-nota="Eb3" data-atalho="1">Ré#<br>Mi♭</button>
+        <button class="tecla" data-nota="E3" data-atalho="W">Mi</button>
+        <button class="tecla" data-nota="F3" data-atalho="E">Fá</button>
+        <button class="tecla preta" data-nota="Gb3" data-atalho="3">Fá#<br>Sol♭</button>
+        <button class="tecla" data-nota="G3" data-atalho="R">Sol</button>
+        <button class="tecla preta" data-nota="Ab3" data-atalho="4">Sol#<br>Lá♭</button>
+        <button class="tecla" data-nota="A3" data-atalho="T">Lá</button>
+        <button class="tecla preta" data-nota="Bb3" data-atalho="5">Lá#<br>Si♭</button>
+        <button class="tecla" data-nota="B3" data-atalho="Y">Si</button>
 
-    <!-- 2ª Oitava (Média) -->
-    <input class="tecla" data-nota="C4" type="button" value="Dó">
-    <input class="tecla preta" data-nota="Db4" type="button" value="Dó&#10;Ré♭">
-    <input class="tecla" data-nota="D4" type="button" value="Ré">
-    <input class="tecla preta" data-nota="Eb4" type="button" value="Ré&#10;Mi♭">
-    <input class="tecla" data-nota="E4" type="button" value="Mi">
-    <input class="tecla" data-nota="F4" type="button" value="Fá">
-    <input class="tecla preta" data-nota="Gb4" type="button" value="Fá&#10;Sol♭">
-    <input class="tecla" data-nota="G4" type="button" value="Sol">
-    <input class="tecla preta" data-nota="Ab4" type="button" value="Sol&#10;Lá♭">
-    <input class="tecla" data-nota="A4" type="button" value="Lá">
-    <input class="tecla preta" data-nota="Bb4" type="button" value="Lá&#10;Si♭">
-    <input class="tecla" data-nota="B4" type="button" value="Si">
+        <!-- 2ª OITAVA (MÉDIA) -->
+        <button class="tecla" data-nota="C4" data-atalho="U">Dó</button>
+        <button class="tecla preta" data-nota="Db4" data-atalho="7">Dó#<br>Ré♭</button>
+        <button class="tecla" data-nota="D4" data-atalho="I">Ré</button>
+        <button class="tecla preta" data-nota="Eb4" data-atalho="8">Ré#<br>Mi♭</button>
+        <button class="tecla" data-nota="E4" data-atalho="O">Mi</button>
+        <button class="tecla" data-nota="F4" data-atalho="P">Fá</button>
+        <button class="tecla preta" data-nota="Gb4" data-atalho="0">Fá#<br>Sol♭</button>
+        <button class="tecla" data-nota="G4" data-atalho="[">Sol</button>
+        <button class="tecla preta" data-nota="Ab4" data-atalho="-">Sol#<br>Lá♭</button>
+        <button class="tecla" data-nota="A4" data-atalho="]">Lá</button>
+        <button class="tecla preta" data-nota="Bb4" data-atalho="=">Lá#<br>Si♭</button>
+        <button class="tecla" data-nota="B4" data-atalho="\">Si</button>
 
-    <!-- 3ª Oitava (Aguda) -->
-    <input class="tecla" data-nota="C5" type="button" value="Dó">
-    <input class="tecla preta" data-nota="Db5" type="button" value="Dó&#10;Ré♭">
-    <input class="tecla" data-nota="D5" type="button" value="Ré">
-    <input class="tecla preta" data-nota="Eb5" type="button" value="Ré&#10;Mi♭">
-    <input class="tecla" data-nota="E5" type="button" value="Mi">
-    <input class="tecla" data-nota="F5" type="button" value="Fá">
-    <input class="tecla preta" data-nota="Gb5" type="button" value="Fá&#10;Sol♭">
-    <input class="tecla" data-nota="G5" type="button" value="Sol">
-    <input class="tecla preta" data-nota="Ab5" type="button" value="Sol&#10;Lá♭">
-    <input class="tecla" data-nota="A5" type="button" value="Lá">
-    <input class="tecla preta" data-nota="Bb5" type="button" value="Lá&#10;Si♭">
-    <input class="tecla" data-nota="B5" type="button" value="Si">
-</section>
+        <!-- 3ª OITAVA (AGUDA) -->
+        <button class="tecla" data-nota="C5" data-atalho="DEL">Dó</button>
+        <button class="tecla preta" data-nota="Db5" data-atalho="INS">Dó#<br>Ré♭</button>
+        <button class="tecla" data-nota="D5" data-atalho="END">Ré</button>
+        <button class="tecla preta" data-nota="Eb5" data-atalho="Home">Ré#<br>Mi♭</button>
+        <button class="tecla" data-nota="E5" data-atalho="PD">Mi</button>
+        <button class="tecla" data-nota="F5" data-atalho="N7">Fá</button>
+        <button class="tecla preta" data-nota="Gb5" data-atalho="NLK">Fá#<br>Sol♭</button>
+        <button class="tecla" data-nota="G5" data-atalho="N8">Sol</button>
+        <button class="tecla preta" data-nota="Ab5" data-atalho="N/">Sol#<br>Lá♭</button>
+        <button class="tecla" data-nota="A5" data-atalho="N9">Lá</button>
+        <button class="tecla preta" data-nota="Bb5" data-atalho="N*">Lá#<br>Si♭</button>
+        <button class="tecla" data-nota="B5" data-atalho="N+">Si</button>
+    </section>
     
 </body>
 </html>
